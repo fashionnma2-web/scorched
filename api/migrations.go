@@ -10,7 +10,7 @@ import (
 // running container always carries the exact schema that shipped with it —
 // no separate manual `psql -f ...` step, no drift between what's in git and
 // what's actually applied to the database.
-//
+
 //go:embed migrations/schema.sql
 var schemaSQL string
 
@@ -26,3 +26,4 @@ func runMigrations(db *sql.DB) error {
 	log.Println("Migrations applied successfully")
 	return nil
 }
+

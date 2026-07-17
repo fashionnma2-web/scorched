@@ -347,21 +347,7 @@ export const SupplyChainVisualizer: React.FC<{ agentId: string }> = ({ agentId }
         const y = (d.source.y + d.target.y) / 2;
         return `translate(${x}, ${y})`;
       });
-
-      linkLabel.selectAll('rect')
-        .attr('x', (_d: any, i: number, nodes: ArrayLike<Element>) => {
-          const el = nodes[i] as Element;
-          const text = d3.select(el.parentElement as Element).select('text').node() as SVGTextElement;
-          return -(text?.getBBox().width || 60) / 2 - 4;
-        })
-        .attr('y', -8)
-        .attr('width', (_d: any, i: number, nodes: ArrayLike<Element>) => {
-          const el = nodes[i] as Element;
-          const text = d3.select(el.parentElement as Element).select('text').node() as SVGTextElement;
-          return (text?.getBBox().width || 60) + 8;
-        })
-        .attr('height', 16);
-
+      
       node.attr('transform', (d: any) => `translate(${d.x}, ${d.y})`);
     });
 

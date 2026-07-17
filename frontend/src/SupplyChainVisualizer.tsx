@@ -349,13 +349,13 @@ export const SupplyChainVisualizer: React.FC<{ agentId: string }> = ({ agentId }
       });
 
       linkLabel.selectAll('rect')
-        .attr('x', function(this: SVGRectElement, d: any) {
-          const text = d3.select(this.parentNode).select('text').node() as SVGTextElement;
+        .attr('x', function(this: any, d: any) {
+          const text = d3.select(this.parentElement as Element).select('text').node() as SVGTextElement;
           return -(text?.getBBox().width || 60) / 2 - 4;
         })
         .attr('y', -8)
-        .attr('width', function(this: SVGRectElement) {
-          const text = d3.select(this.parentNode).select('text').node() as SVGTextElement;
+        .attr('width', function(this: any) {
+          const text = d3.select(this.parentElement as Element).select('text').node() as SVGTextElement;
           return (text?.getBBox().width || 60) + 8;
         })
         .attr('height', 16);

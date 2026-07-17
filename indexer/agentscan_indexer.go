@@ -19,6 +19,7 @@ import (
 	"sync"
 	"syscall"
 	"time"
+	"crypto/tls"
 
 	"github.com/ethereum/go-ethereum"
 	"github.com/ethereum/go-ethereum/accounts/abi"
@@ -504,9 +505,10 @@ func NewIndexer(cfg *Config) (*Indexer, error) {
 
 	// Connect to Redis
 	redisClient := redis.NewClient(&redis.Options{
-		Addr:     cfg.RedisAddr,
-		Password: cfg.RedisPassword,
-	})
+    Addr:      cfg.RedisAddr,
+    Password:  cfg.RedisPassword,
+    TLSConfig: &tls.Config{},
+})
 	if err := redisClient.Ping(ctx).Err(); err != nil {
 		return nil, fmt.Errorf("ping redis: %w", err)
 	}

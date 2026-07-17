@@ -18,6 +18,7 @@ import (
 	"strings"
 	"sync"
 	"time"
+	"crypto/tls"
 
 	"github.com/99designs/gqlgen/graphql"
 	"github.com/99designs/gqlgen/graphql/handler"
@@ -177,9 +178,10 @@ func NewDataSource(cfg *APIConfig) (*DataSource, error) {
 	}
 
 	redisClient := redis.NewClient(&redis.Options{
-		Addr:     cfg.RedisAddr,
-		Password: cfg.RedisPassword,
-	})
+    Addr:      cfg.RedisAddr,
+    Password:  cfg.RedisPassword,
+    TLSConfig: &tls.Config{},
+})
 
 	return &DataSource{
 		db:          db,

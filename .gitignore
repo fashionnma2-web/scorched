@@ -1,0 +1,7 @@
+.env
+neo4j/
+neo4j-community-*.tar.gz
+dump.rdb
+node_modules/
+*.log
+*.zip

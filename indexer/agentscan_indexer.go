@@ -1,6 +1,6 @@
 // ============================================================
 // AGENTSCAN — X Layer Event Indexer (Go)
-// ERC-8004 + APP Real-Time Ingestion Engin
+// ERC-8004 + APP Real-Time Ingestion Engine
 // ============================================================
 
 package main
